@@ -2,11 +2,19 @@ version: '2'
 services:
   openvpn:
     cap_add:
-     - NET_ADMIN
+      - NET_ADMIN
     image: kylemanna/openvpn
     container_name: openvpn
     ports:
-     - "1194:1194/udp"
+      - "1194:1194/udp"
     restart: always
     volumes:
-     - ./vpnka-data/conf:/etc/openvpn
+      - ./vpnka-data/conf:/etc/openvpn
+
+  hostsupdate:
+    build: ./hostsupdate
+    container_name: hostsupdate
+    environment:
+      - HOSTSUPDATE_CCD_FILEPATH=/openvpn-conf/ccd/DEFAULT
+    volumes:
+      - ./vpnka-data/conf/:/openvpn-conf
