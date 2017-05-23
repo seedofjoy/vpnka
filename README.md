@@ -31,3 +31,13 @@
 * Run OpenVPN server:
 
       docker-compose up -d openvpn
+
+### Note
+By default traffic goes over VPN only for blocked domains *(from `hostsupdate/hosts.txt`)*.
+
+For redirect all traffic over VPN you can create new `ovpn` profile:
+
+```bash
+cp <your_name>.ovpn <your_name>_full.ovpn
+echo "redirect-gateway def1" >> <your_name>_full.ovpn
+```
