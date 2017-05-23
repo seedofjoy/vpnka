@@ -19,6 +19,7 @@ https://disk.yandex.ua/
 https://dns.yandex.ru/
 https://dns.yandex.ua/
 https://fotki.yandex.ru/next/
+https://i.mycdn.me/
 https://kassa.yandex.ru/
 https://mail.yandex.ua/
 https://market.yandex.ru/
@@ -27,10 +28,12 @@ https://metrika.yandex.ru/
 https://metrika.yandex.ua/
 https://metro.yandex.ru/
 https://metro.yandex.ua/
+https://mobile.yandex.net/
 https://money.yandex.ru/
 https://money.yandex.ru/gibdd-debts/
 https://money.yandex.ru/new
 https://music.yandex.ua/
+https://mycdn.me/
 https://n.maps.yandex.ru/
 https://news.yandex.ru/
 https://news.yandex.ua/
@@ -39,6 +42,7 @@ https://partner.yandex.ru/
 https://partner.yandex.ua/
 https://passport.yandex.ua/auth/update/
 https://pdd.yandex.ru/domains_add/
+https://plus.kinopoisk.ru/
 https://rabota.yandex.ru/
 https://rabota.yandex.ua/
 https://radio.yandex.ua/
@@ -50,6 +54,7 @@ https://speechkit.yandex.ru/
 https://sprav.yandex.ru/
 https://sprav.yandex.ua/
 https://st.kp.yandex.net/
+https://st.mycdn.me/
 https://stat.yandex.ru/
 https://stat.yandex.ua/
 https://static.kp.yandex.net/
@@ -63,6 +68,7 @@ https://tv.yandex.ru/
 https://tv.yandex.ua/
 https://userapi.com/
 https://vk.com/
+https://vkontakte.ru/
 https://webmaster.yandex.ru/
 https://www.drweb.ru/
 https://www.kinopoisk.ru/
