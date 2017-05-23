@@ -6,6 +6,8 @@ https://audience.yandex.ua/
 https://auto.ru/
 https://avia.yandex.ru/
 https://avia.yandex.ua/
+https://awsync.yandex.ru/
+https://awsync.yandex.ua/
 https://browser.yandex.ru/desktop/main/
 https://browser.yandex.ua/desktop/
 https://calendar.yandex.ru/
@@ -47,8 +49,10 @@ https://site.yandex.ua/
 https://speechkit.yandex.ru/
 https://sprav.yandex.ru/
 https://sprav.yandex.ua/
+https://st.kp.yandex.net/
 https://stat.yandex.ru/
 https://stat.yandex.ua/
+https://static.kp.yandex.net/
 https://taxi.yandex.ru/
 https://tech.yandex.ru/
 https://telephony.yandex.ru/
@@ -57,6 +61,7 @@ https://translate.yandex.ua/
 https://travel.yandex.ru/
 https://tv.yandex.ru/
 https://tv.yandex.ua/
+https://userapi.com/
 https://vk.com/
 https://webmaster.yandex.ru/
 https://www.drweb.ru/
@@ -76,6 +81,7 @@ https://yandex.ru/suvenirka
 https://yandex.ru/time
 https://yandex.ru/video/
 https://yandex.ru/yaca/
+https://yandex.st/
 https://yandex.ua/
 https://yandex.ua/adv
 https://yandex.ua/blogs
@@ -88,4 +94,3 @@ https://yandex.ua/video/
 https://yandex.ua/yaca/
 https://yandexdatafactory.com/ru/
 https://zno.yandex.ua/ru/
-https://st.kp.yandex.net/
