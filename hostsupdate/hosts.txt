@@ -20,7 +20,11 @@ https://dns.yandex.ru/
 https://dns.yandex.ua/
 https://fotki.yandex.ru/next/
 https://i.mycdn.me/
+https://r.mradx.net/
+https://img.imgsmail.ru/ag/
 https://kassa.yandex.ru/
+https://kiks.kinopoisk.ru/su/
+https://kp.cdn.yandex.net/
 https://mail.ru/
 https://mail.ua/
 https://mail.yandex.ua/
