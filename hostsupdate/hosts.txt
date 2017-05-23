@@ -21,6 +21,8 @@ https://dns.yandex.ua/
 https://fotki.yandex.ru/next/
 https://i.mycdn.me/
 https://kassa.yandex.ru/
+https://mail.ru/
+https://mail.ua/
 https://mail.yandex.ua/
 https://market.yandex.ru/
 https://market.yandex.ua/
@@ -37,12 +39,15 @@ https://mycdn.me/
 https://n.maps.yandex.ru/
 https://news.yandex.ru/
 https://news.yandex.ua/
+https://ok-portal.mail.ru/
 https://ok.ru/
 https://partner.yandex.ru/
 https://partner.yandex.ua/
 https://passport.yandex.ua/auth/update/
 https://pdd.yandex.ru/domains_add/
+https://pimg.mycdn.me/
 https://plus.kinopoisk.ru/
+https://pp.userapi.com/
 https://rabota.yandex.ru/
 https://rabota.yandex.ua/
 https://radio.yandex.ua/
