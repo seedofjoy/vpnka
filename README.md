@@ -24,7 +24,7 @@
 
       docker-compose run --rm openvpn ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn
 
-* Update blocked ips:
+* Update blocked IPs:
 
       docker-compose run --rm hostsupdate gen_ccd.py
       
