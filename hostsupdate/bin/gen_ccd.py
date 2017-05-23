@@ -39,7 +39,7 @@ def get_hosts(filepath):
 def write_ovpn_ccd(ips, dstpath):
     with open('ovpn.ccd', 'w') as f:
         for ip in ips:
-            f.write('push "route {ip} 255.255.255.0"\n'.format(ip=ip))
+            f.write('push "route {ip} 255.255.255.255"\n'.format(ip=ip))
 
     shutil.copyfile('ovpn.ccd', dstpath)
 
