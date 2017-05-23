@@ -5,6 +5,7 @@ import shutil
 import time
 
 from contextlib import contextmanager
+from itertools import groupby
 from urllib.parse import urlparse
 
 
@@ -36,12 +37,29 @@ def get_hosts(filepath):
         return set(prepare_host(h.strip()) for h in f)
 
 
-def write_ovpn_ccd(ips, dstpath):
+def write_ovpn_ccd(ip_mask_list, dstpath):
     with open('ovpn.ccd', 'w') as f:
-        for ip in ips:
-            f.write('push "route {ip} 255.255.255.255"\n'.format(ip=ip))
+        for ip, mask in ip_mask_list:
+            f.write('push "route {ip} {mask}"\n'.format(ip=ip, mask=mask))
 
     shutil.copyfile('ovpn.ccd', dstpath)
+
+
+def make_24_subnet(ip):
+    return ip.rsplit('.', 1)[0] + '.0'
+
+
+def get_squashed_ips_with_masks(ips):
+    ip_mask_list = []
+    for squashed_ip, g in groupby(sorted(ips), make_24_subnet):
+        grouped_ips = list(g)
+        if len(grouped_ips) > 5:
+            ip_mask_list.append(
+                (squashed_ip, '255.255.255.0'))
+        else:
+            ip_mask_list.extend(
+                (ip, '255.255.255.255') for ip in grouped_ips)
+    return ip_mask_list
 
 
 def main():
@@ -56,8 +74,10 @@ def main():
         resolved_ips.update(r.address for r in resolves)
 
     if CCD_FILEPATH:
-        write_ovpn_ccd(resolved_ips, CCD_FILEPATH)
-        print('Written {} IP addresses.'.format(len(resolved_ips)))
+        ip_mask_list = get_squashed_ips_with_masks(resolved_ips)
+        write_ovpn_ccd(ip_mask_list, CCD_FILEPATH)
+        print('Recieved {} IP addresses.'.format(len(resolved_ips)))
+        print('Written {} squashed IP addresses.'.format(len(ip_mask_list)))
     else:
         print('"HOSTSUPDATE_CCD_FILEPATH" environment variable is not found.')
 
