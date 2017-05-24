@@ -8,9 +8,11 @@ https://avia.yandex.ru/
 https://avia.yandex.ua/
 https://awsync.yandex.ru/
 https://awsync.yandex.ua/
+https://banners.mobile.yandex.net/
 https://browser.yandex.ru/desktop/main/
 https://browser.yandex.ua/desktop/
 https://calendar.yandex.ru/
+https://cs12574.userapi.com/
 https://delivery.yandex.ru/promo/
 https://direct.yandex.ru/
 https://direct.yandex.ua/
@@ -20,7 +22,6 @@ https://dns.yandex.ru/
 https://dns.yandex.ua/
 https://fotki.yandex.ru/next/
 https://i.mycdn.me/
-https://r.mradx.net/
 https://img.imgsmail.ru/ag/
 https://kassa.yandex.ru/
 https://kiks.kinopoisk.ru/su/
@@ -28,6 +29,7 @@ https://kp.cdn.yandex.net/
 https://mail.ru/
 https://mail.ua/
 https://mail.yandex.ua/
+https://maps.me/
 https://market.yandex.ru/
 https://market.yandex.ua/
 https://metrika.yandex.ru/
@@ -43,8 +45,10 @@ https://mycdn.me/
 https://n.maps.yandex.ru/
 https://news.yandex.ru/
 https://news.yandex.ua/
+https://ns1.mail.ru/
 https://ok-portal.mail.ru/
 https://ok.ru/
+https://otvet.mail.ru/
 https://partner.yandex.ru/
 https://partner.yandex.ua/
 https://passport.yandex.ua/auth/update/
@@ -52,12 +56,14 @@ https://pdd.yandex.ru/domains_add/
 https://pimg.mycdn.me/
 https://plus.kinopoisk.ru/
 https://pp.userapi.com/
+https://r.mradx.net/
 https://rabota.yandex.ru/
 https://rabota.yandex.ua/
 https://radio.yandex.ua/
 https://rasp.yandex.ru/
 https://rasp.yandex.ua/
 https://realty.yandex.ru/
+https://rosenberg.appmetrica.yandex.net/
 https://site.yandex.ua/
 https://speechkit.yandex.ru/
 https://sprav.yandex.ru/
@@ -77,6 +83,7 @@ https://tv.yandex.ru/
 https://tv.yandex.ua/
 https://userapi.com/
 https://vk.com/
+https://vk.go.mail.ru/
 https://vkontakte.ru/
 https://webmaster.yandex.ru/
 https://www.drweb.ru/
@@ -109,7 +116,3 @@ https://yandex.ua/video/
 https://yandex.ua/yaca/
 https://yandexdatafactory.com/ru/
 https://zno.yandex.ua/ru/
-https://ns1.mail.ru/
-https://maps.me/
-https://rosenberg.appmetrica.yandex.net/
-https://banners.mobile.yandex.net/
