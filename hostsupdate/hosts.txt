@@ -109,3 +109,7 @@ https://yandex.ua/video/
 https://yandex.ua/yaca/
 https://yandexdatafactory.com/ru/
 https://zno.yandex.ua/ru/
+https://ns1.mail.ru/
+https://maps.me/
+https://rosenberg.appmetrica.yandex.net/
+https://banners.mobile.yandex.net/
