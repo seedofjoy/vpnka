@@ -1,17 +1,29 @@
 #!/usr/bin/env python3
-import berserker_resolver
+import ipaddress
 import os
 import shutil
 import time
 
 from contextlib import contextmanager
-from itertools import groupby
-from urllib.parse import urlparse
+from ipwhois.asn import ASNOrigin
+from ipwhois.net import Net
+from itertools import chain
 
 
-NAMESERVERS = ('8.8.8.8', '8.8.4.4', '84.200.69.80', '84.200.70.40')
-HOSTS_PATH = os.environ.get('HOSTSUPDATE_HOSTS_PATH')
 CCD_FILEPATH = os.environ.get('HOSTSUPDATE_CCD_FILEPATH')
+ASN_LIST = (
+    'AS43247',  # Yandex
+    'AS13238',  # Yandex
+    'AS202611',  # Yandex
+    'AS207207',  # Yandex
+    'AS47542',  # Vkontakte
+    'AS47541',  # Vkontakte
+    'AS62243',  # Vkontakte
+    'AS47764',  # Mail.ru
+    'AS21051',  # Mail.ru
+    'AS41983',  # Kaspersky Lab
+    'AS200107',  # Kaspersky Lab
+)
 
 
 @contextmanager
@@ -21,63 +33,55 @@ def timed():
     print('Elapsed time: {:.1f}s'.format(time.time() - t))
 
 
-def prepare_host(url):
-    if '//' not in url:
-        url = 'http://' + url
+def get_networks_from_asn(asn_list):
+    net = Net('2001:43f8:7b0::')
+    asn_origin = ASNOrigin(net)
+    networks = []
+    for asn in ASN_LIST:
+        nets = asn_origin.lookup(asn, field_list=['source'])['nets']
+        networks.extend(ipaddress.ip_network(net['cidr']) for net in nets)
 
-    hostname = urlparse(url).hostname
-    if not hostname:
-        raise ValueError('Cannot get hostname from: {!r}'.format(url))
-
-    return hostname
-
-
-def get_hosts(filepath):
-    with open(filepath, 'r') as f:
-        return set(prepare_host(h.strip()) for h in f)
+    return networks
 
 
-def write_ovpn_ccd(ip_mask_list, dstpath):
+def make_push_route_str(ip_network):
+    if ip_network.version == 4:
+        push_str = 'push "route {ip} {mask}"\n'.format(
+            ip=ip_network.network_address,
+            mask=ip_network.netmask,
+        )
+    else:
+        push_str = 'push "route-ipv6 {cidr}"\n'.format(
+            cidr=ip_network.compressed,
+        )
+    return push_str
+
+
+def write_ovpn_ccd(ip_networks, dstpath):
     with open('ovpn.ccd', 'w') as f:
-        for ip, mask in ip_mask_list:
-            f.write('push "route {ip} {mask}"\n'.format(ip=ip, mask=mask))
+        for ip_network in ip_networks:
+            f.write(make_push_route_str(ip_network))
 
     shutil.copyfile('ovpn.ccd', dstpath)
 
 
-def make_24_subnet(ip):
-    return ip.rsplit('.', 1)[0] + '.0'
-
-
-def get_squashed_ips_with_masks(ips):
-    ip_mask_list = []
-    for squashed_ip, g in groupby(sorted(ips), make_24_subnet):
-        grouped_ips = list(g)
-        if len(grouped_ips) > 5:
-            ip_mask_list.append(
-                (squashed_ip, '255.255.255.0'))
-        else:
-            ip_mask_list.extend(
-                (ip, '255.255.255.255') for ip in grouped_ips)
-    return ip_mask_list
-
-
 def main():
-    hosts = get_hosts(HOSTS_PATH)
+    networks = get_networks_from_asn(ASN_LIST)
 
-    print('Start to resolve {} hostnames...'.format(len(hosts)))
-    resolver = berserker_resolver.Resolver(
-        tries=12, nameservers=NAMESERVERS, www=True, www_combine=True)
+    ipv4_networks = [n for n in networks if n.version == 4]
+    ipv6_networks = [n for n in networks if n.version == 6]
+    print('Recieved: {} IPv4 networks, {} IPv6 networks.'.format(
+        len(ipv4_networks), len(ipv6_networks),
+    ))
 
-    resolved_ips = set()
-    for resolves in resolver.resolve(hosts).values():
-        resolved_ips.update(r.address for r in resolves)
+    collapsed_ipv4 = list(ipaddress.collapse_addresses(ipv4_networks))
+    collapsed_ipv6 = list(ipaddress.collapse_addresses(ipv6_networks))
+    print('After collapsing: {} IPv4 networks, {} IPv6 networks.'.format(
+        len(collapsed_ipv4), len(collapsed_ipv6),
+    ))
 
     if CCD_FILEPATH:
-        ip_mask_list = get_squashed_ips_with_masks(resolved_ips)
-        write_ovpn_ccd(ip_mask_list, CCD_FILEPATH)
-        print('Recieved {} IP addresses.'.format(len(resolved_ips)))
-        print('Written {} squashed IP addresses.'.format(len(ip_mask_list)))
+        write_ovpn_ccd(chain(ipv4_networks, ipv6_networks), CCD_FILEPATH)
     else:
         print('"HOSTSUPDATE_CCD_FILEPATH" environment variable is not found.')
 

@@ -6,9 +6,7 @@ RUN apk add --no-cache \
 
 RUN pip3 install --upgrade pip
 RUN pip3 install \
-    berserker-resolver==2.0.1 \
-    dnspython==1.15.0 \
-    dnspython3==1.15.0
+    ipwhois==0.15.1
 
 ADD ./hosts.txt /hosts.txt
 ENV HOSTSUPDATE_HOSTS_PATH=/hosts.txt
