@@ -81,7 +81,7 @@ def main():
     ))
 
     if CCD_FILEPATH:
-        write_ovpn_ccd(chain(ipv4_networks, ipv6_networks), CCD_FILEPATH)
+        write_ovpn_ccd(chain(collapsed_ipv4, collapsed_ipv6), CCD_FILEPATH)
     else:
         print('"HOSTSUPDATE_CCD_FILEPATH" environment variable is not found.')
 
