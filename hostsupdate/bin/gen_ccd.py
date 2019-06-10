@@ -23,6 +23,7 @@ ASN_LIST = (
     'AS21051',  # Mail.ru
     'AS41983',  # Kaspersky Lab
     'AS200107',  # Kaspersky Lab
+    'AS61306',  # LitRes
 )
 
 
